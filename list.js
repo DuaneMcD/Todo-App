@@ -41,7 +41,6 @@ function newItem() {
 function savedTasks(){
     savedTasks = JSON.parse(localStorage.getItem("saved"));
     document.getElementById("todoList").innerHTML = savedTasks;
-    closeBtn.onclick = deleteTask;
 }
 //Reset App
 function clearAll(){
