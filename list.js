@@ -1,15 +1,14 @@
-document.querySelector('.submit').addEventListener("click", console.log("button works!"));
+document.querySelector('.submit').addEventListener("click", displayTodo);
 
 function displayTodo() {
     const input = document.getElementById("myInput");
     const inputValue = input.value;
-    if (input === '') { 
+    if (inputValue === '') { 
         alert("Enter a Todo , Todo cannot be blank.");
         return;
     }
     const todo = createTodo(inputValue);
     document.getElementById("todoList").append(todo);
-    //reset inputs
     input.value = "";
     //dateInput.value = "";
 }
@@ -21,6 +20,7 @@ function createTodo(text) {
     todoListItem.append(toggleTodoCheckBox);
     todoListItem.append(todoText);
     todoListItem.append(deleteButton);
+    return todoListItem;
 }
 function createTodoParagraph(text) {
     const todoParagraph = document.createElement("p");
@@ -36,6 +36,9 @@ function createToggleTodoCheckbox(todoText) {
     })
     return checkbox;
 }
+function toggleCheckedOff(todoText) {
+    todoText.classList.toggle("completed");
+}
 function createDeleteButton(todoListItem) {
     const deleteButton = document.createElement("button");
     const fire = document.createTextNode(" \uD83D\uDD25");
@@ -45,6 +48,14 @@ function createDeleteButton(todoListItem) {
         deleteTodo(todoListItem);
     })
     return deleteButton;
+}
+function deleteTodo (todoListItem){
+    todoListItem.remove();
+}
+document.querySelector('.clearAll').addEventListener("click", clearAll);
+function clearAll(){
+    localStorage.clear();
+    window.location.reload();
 }
 //create due date
 // function createDisplayDueDate() {}
@@ -56,21 +67,6 @@ function createDeleteButton(todoListItem) {
 // dueDate.type = "date";
 // dueDate.className = "dueDate";
 // dueDate.defaultValue = dateValue;
-
-function toggleCheckedOff(todoText){
-    todoText.classList.toggle("completed");
-}
-function deleteTodo(todoListItem){
-    remove();
-}
-//Reset App
-function clearAll(){
-    localStorage.clear();
-    window.location.reload();
-}
-
-
-
 /*
 //window.onload = savedTodos();
 
