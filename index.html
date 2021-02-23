@@ -4,24 +4,22 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Duane Todo</title>
+    <title>Todo App</title>
     <link rel="stylesheet" href="main.css" />
   </head>
-  <body onload="savedTasks()">
+  <body>
     <div class="container1">
       <h1>True Productivity List</h1>
-      <h2>Now with adjustable procrastination!</h2>
       <input
-        class="new-task"
         type="input"
+        class="todoInput"
         id="myInput"
         placeholder="New Task..."
       />
-      <input class="new-task" type="date" id="myDate" />
-      <button class="submit" onclick="newItem()">Add to List</button>
-      <button class="clearAll" onclick="clearAll()">Clear All Tasks</button>
+      <input type="date" class="todoInput" id="myDate" />
+      <button class="submit">Add to List</button>
+      <button class="clearAll">Clear All Tasks</button>
     </div>
     <ul class="todoList" id="todoList"></ul>
-    <script src="list.js"></script>
   </body>
 </html>
