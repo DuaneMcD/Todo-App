@@ -1,41 +1,87 @@
 body {
-  width: 500px;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  flex-direction: column;
-  margin: auto;
-  background: slategray;
-}
-.completed {
-  text-decoration: line-through;
-  color: lightslategray;
+  font-family: "Trebuchet MS";
+  background-color: rgb(24, 86, 128);
+  margin-left: 5em;
+  margin-right: 5em;
 }
 .container1 {
-  background: rgba(0, 0, 128, 0.034);
+  flex-direction: column;
+  display: flex;
+  flex: row;
+  align-items: center;
+  min-width: 35em;
+  background: rgba(0, 0, 0, 0.274);
+  border-radius: 0.85em;
+  box-shadow: 0.055em 0.055em 0.48em rgba(0, 0, 0, 0.568);
+}
+.container1 > input {
+  font-family: "Trebuchet MS";
+  margin: 5px;
+  font-size: 1.1em;
+  background-color: rgba(255, 255, 255, 0.945);
+  border: none;
+  text-align: center;
+  padding: 0.45em;
+  color: rgb(0, 0, 0);
+  min-height: 1.1em;
+  border-radius: 1em;
+  box-shadow: 0.5em 0.5em 0.48em rgba(0, 0, 0, 0.568);
+}
+::placeholder {
+  color: rgba(0, 0, 0, 0.418);
 }
 h1 {
+  text-align: center;
   color: white;
-  font-size: 3em;
-  margin-bottom: 0;
+  font-size: 2.5em;
+  margin-bottom: 0.6em;
+  text-shadow: 0.5em 0.5em 0.48em rgba(0, 0, 0, 0.568);
 }
 h2 {
   margin-top: 0;
   color: lightgoldenrodyellow;
+  text-shadow: 0.5em 0.5em 0.48em rgba(0, 0, 0, 0.568);
 }
-input {
-  border: none;
-}
-ul {
-  flex: 1;
-  list-style-type: none;
-  font: 1.75em bold;
-  color: mediumseagreen;
-  background: lightsteelblue;
-  text-align: center;
+.todoInput {
+  width: 45%;
+  text-shadow: 0.15em 0.15em 1.2em rgba(0, 0, 0, 0.144);
+  font-weight: bolder;
+  text-align: right;
 }
 li {
+  font-family: "Trebuchet MS";
+  font-weight: bold;
+  height: 1.1em;
+  width: 21em;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font: 1.75em bold;
+  color: rgb(255, 255, 255);
+  background: rgba(228, 228, 228, 0.527);
   text-align: left;
+  list-style-type: none;
+  margin-top: 0.4em;
+  margin-bottom: 0.3em;
+  border-width: 0.05em;
+  border-style: solid;
+  border-color: rgba(197, 231, 2, 0.795);
+  border-radius: 0.18em;
+  box-shadow: 0.5em 0.5em 2.25em rgba(0, 0, 0, 0.568);
+  text-shadow: 0.15em 0.15em 0.8em rgba(0, 0, 0, 0.384);
+}
+.completed {
+  text-decoration: line-through;
+  color: rgba(103, 106, 109, 0.753);
+}
+#todoList > li > input[type="date"] {
+  font-family: "Trebuchet MS";
+  font-size: 0.7em;
+  background-color: transparent;
+  border: none;
+  text-align: right;
+  padding: 0;
+  color: rgb(0, 0, 0);
 }
 .dueDate {
   font: 0.625em bold;
@@ -43,28 +89,36 @@ li {
   color: black;
   background-color: transparent;
 }
-.todo {
-  background-color: rgb(222, 223, 223);
-}
-.dueBy {
-  font: 0.625em bold;
-  color: black;
-}
 .submit {
-  background-color: transparent;
+  margin-top: 0.85em;
+  background-color: rgba(255, 255, 255, 0.247);
   border: none;
-  font-size: 1.25em;
+  font-size: 1.6em;
   font-weight: bold;
+  color: rgb(255, 255, 255);
+  border-radius: 8px;
+  box-shadow: 0.025em 0.025em 0.48em rgba(0, 0, 0, 0.568);
 }
-.close {
+.delete {
+  margin-left: 0.75em;
+  align-self: stretch;
   background-color: transparent;
   border: none;
 }
 .clearAll {
-  color: darkslateblue;
+  align-self: flex-end;
+  font-size: 1.1em;
+  color: rgb(240, 146, 6);
   border: none;
   font-weight: bolder;
-  background-color: transparent;
-  margin-top: 2ex;
-  padding-right: 325px;
+  background-color: rgba(255, 255, 255, 0.089);
+  margin-top: 0.5em;
+  margin-bottom: 0.3em;
+  margin-right: 0.35em;
+  border-radius: 5px;
+  box-shadow: 0.1em 0.1em 0.48em rgba(0, 0, 0, 0.568);
+  text-shadow: 0.05em 0.05em 0.48em rgba(0, 0, 0, 0.418);
+}
+#todoList > li > input.checkbox {
+  margin: 10px;
 }

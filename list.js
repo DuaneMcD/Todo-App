@@ -1,5 +1,15 @@
 document.querySelector('.submit').addEventListener("click", displayTodo);
 
+function clockDisplay() {
+const clock = new Date();
+clock.setMinutes(clock.getMinutes() - clock.getTimezoneOffset());
+clock.setMilliseconds(null);
+clock.setSeconds(null);
+document.querySelector('#myDate').value = clock.toISOString().slice(0, -1);
+}
+clockDisplay();
+setInterval(clockDisplay, 30000);
+
 function displayTodo() {
     const input = document.getElementById("myInput");
     const inputValue = input.value;
@@ -7,18 +17,26 @@ function displayTodo() {
         alert("Enter a Todo , Todo cannot be blank.");
         return;
     }
-    const todo = createTodo(inputValue);
+    const date = document.getElementById("myDate").value;
+    const dateValue = date.toISOString().slice(0, -1);
+    if (dateValue === ''){
+        alert("Must select a due date.");
+        return;
+    }
+    const todo = createTodo(inputValue,dateValue);
     document.getElementById("todoList").append(todo);
     input.value = "";
-    //dateInput.value = "";
+    date.valueAsDate = clock.toISOString().slice(0, -1);
 }
-function createTodo(text) {
+function createTodo(text,date) {
     const todoListItem = document.createElement("li");
     const todoText = createTodoParagraph(text);
     const toggleTodoCheckBox = createToggleTodoCheckbox(todoText);
+    const todoDueDate = createTodoDateSelector(date);
     const deleteButton = createDeleteButton(todoListItem);
     todoListItem.append(toggleTodoCheckBox);
     todoListItem.append(todoText);
+    todoListItem.append(todoDueDate);
     todoListItem.append(deleteButton);
     return todoListItem;
 }
@@ -39,6 +57,13 @@ function createToggleTodoCheckbox(todoText) {
 function toggleCheckedOff(todoText) {
     todoText.classList.toggle("completed");
 }
+function createTodoDateSelector(dateValue) {  
+    const todoDateSelector = document.createElement("input");
+    todoDateSelector.type = "date";
+    todoDateSelector.class = "dateSelector";
+    todoDateSelector.value = dateValue;
+    return  todoDateSelector;    
+}
 function createDeleteButton(todoListItem) {
     const deleteButton = document.createElement("button");
     const fire = document.createTextNode(" \uD83D\uDD25");
@@ -57,16 +82,6 @@ function clearAll(){
     localStorage.clear();
     window.location.reload();
 }
-//create due date
-// function createDisplayDueDate() {}
-// const dueBy = document.createElement("span")
-// dueBy.innerText = "Due By: "
-// dueBy.className = "dueBy"
-// const dateValue = document.getElementById("myDate").value;
-// const dueDate = document.createElement("input");
-// dueDate.type = "date";
-// dueDate.className = "dueDate";
-// dueDate.defaultValue = dateValue;
 /*
 //window.onload = savedTodos();
 
