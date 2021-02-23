@@ -1,67 +1,66 @@
-const todo = createTodo();
+document.querySelector('.submit').addEventListener("click", console.log("button works!"));
 
-function createTodo(text) {
+function displayTodo() {
     const input = document.getElementById("myInput");
     const inputValue = input.value;
     if (input === '') { 
-        alert("Enter a task");
+        alert("Enter a Todo , Todo cannot be blank.");
         return;
     }
-    else {
-        const todoListItem = document.createElement("li");
-        const todoText = createTodoParagraph(text);
-        const toggleTodoCheckBox = createToggleTodoCheckbox(todoText);
-        const deleteButton = createDeleteButton(todoListItem);
-        todoListItem.append(toggleTodoCheckBox);
-        todoListItem.append(todoText);
-        todoListItem.append(deleteButton);
-
-        // new item appended
-        document.getElementById("todoList").append(newTodo);
-        
-        input.value = "";
-        dateInput.value = "";
-    }
+    const todo = createTodo(inputValue);
+    document.getElementById("todoList").append(todo);
+    //reset inputs
+    input.value = "";
+    //dateInput.value = "";
+}
+function createTodo(text) {
+    const todoListItem = document.createElement("li");
+    const todoText = createTodoParagraph(text);
+    const toggleTodoCheckBox = createToggleTodoCheckbox(todoText);
+    const deleteButton = createDeleteButton(todoListItem);
+    todoListItem.append(toggleTodoCheckBox);
+    todoListItem.append(todoText);
+    todoListItem.append(deleteButton);
+}
 function createTodoParagraph(text) {
     const todoParagraph = document.createElement("p");
     todoParagraph.textContent = text;
     return todoParagraph;
-
 }
-//create todo completed toggle
 function createToggleTodoCheckbox(todoText) {
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.className = "checkbox";
-    checkbox.addEventListener{"click", () => (
-        toggleCheckedOff(todText)
-})
+    checkbox.addEventListener("click", () => {
+        toggleCheckedOff(todoText);
+    })
     return checkbox;
 }
-//create due date
-function createDisplayDueDate() {}
-const dueBy = document.createElement("span")
-dueBy.innerText = "Due By: "
-dueBy.className = "dueBy"
-const dateValue = document.getElementById("myDate").value;
-const dueDate = document.createElement("input");
-dueDate.type = "date";
-dueDate.className = "dueDate";
-dueDate.defaultValue = dateValue;
-
-// create remove button
-function createDeleteButton() {}
+function createDeleteButton(todoListItem) {
     const deleteButton = document.createElement("button");
     const fire = document.createTextNode(" \uD83D\uDD25");
     deleteButton.className = "delete";
     deleteButton.append(fire);
-    deleteButton.onclick = deleteTask;
+    deleteButton.addEventListener("click", () => {
+        deleteTodo(todoListItem);
+    })
     return deleteButton;
+}
+//create due date
+// function createDisplayDueDate() {}
+// const dueBy = document.createElement("span")
+// dueBy.innerText = "Due By: "
+// dueBy.className = "dueBy"
+// const dateValue = document.getElementById("myDate").value;
+// const dueDate = document.createElement("input");
+// dueDate.type = "date";
+// dueDate.className = "dueDate";
+// dueDate.defaultValue = dateValue;
 
 function toggleCheckedOff(todoText){
     todoText.classList.toggle("completed");
 }
-function deleteTask(todoListItem){
+function deleteTodo(todoListItem){
     remove();
 }
 //Reset App
@@ -88,4 +87,4 @@ function savedTodos(){
     savedTasks = JSON.parse(localStorage.getItem("saved"));
     document.getElementById("todoList").innerHTML = savedTasks;
 }
-/*
+*/
