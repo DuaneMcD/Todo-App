@@ -1,14 +1,14 @@
 document.querySelector('.submit').addEventListener("click", displayTodo);
 
 function clockDisplay() {
-const clock = new Date();
-clock.setMinutes(clock.getMinutes() - clock.getTimezoneOffset());
-clock.setMilliseconds(null);
-clock.setSeconds(null);
-document.querySelector('#myDate').value = clock.toISOString().slice(0, -1);
+    const clock = new Date();
+    clock.setMinutes(clock.getMinutes() - clock.getTimezoneOffset());
+    clock.setMilliseconds(null);
+    clock.setSeconds(null);
+    document.querySelector('#myDate').value = clock.toISOString().slice(0, -1);
 }
 clockDisplay();
-setInterval(clockDisplay, 30000);
+setInterval(clockDisplay, 60000);
 
 function displayTodo() {
     const input = document.getElementById("myInput");
@@ -17,8 +17,9 @@ function displayTodo() {
         alert("Enter a Todo , Todo cannot be blank.");
         return;
     }
-    const date = document.getElementById("myDate").value;
-    const dateValue = date.toISOString().slice(0, -1);
+    const date = document.getElementById("myDate");
+    const dateValue = date.value;
+    console.log(dateValue);
     if (dateValue === ''){
         alert("Must select a due date.");
         return;
@@ -26,7 +27,7 @@ function displayTodo() {
     const todo = createTodo(inputValue,dateValue);
     document.getElementById("todoList").append(todo);
     input.value = "";
-    date.valueAsDate = clock.toISOString().slice(0, -1);
+    clockDisplay();
 }
 function createTodo(text,date) {
     const todoListItem = document.createElement("li");
@@ -59,11 +60,14 @@ function toggleCheckedOff(todoText) {
 }
 function createTodoDateSelector(dateValue) {  
     const todoDateSelector = document.createElement("input");
-    todoDateSelector.type = "date";
+    todoDateSelector.type = "datetime-local";
     todoDateSelector.class = "dateSelector";
     todoDateSelector.value = dateValue;
+    // dateValue.setMilliseconds(null);
+    // dateValue.setSeconds(null);
     return  todoDateSelector;    
 }
+
 function createDeleteButton(todoListItem) {
     const deleteButton = document.createElement("button");
     const fire = document.createTextNode(" \uD83D\uDD25");
