@@ -1,5 +1,10 @@
 document.querySelector('.submit').addEventListener("click", displayTodo);
+window.onload = getSavedTodoList();
 
+function getSavedTodoList(){
+    savedTodoList = JSON.parse(localStorage.getItem("savedTodos"));
+    document.getElementById("todoList").textContent = savedTodoList;
+}
 function clockDisplay() {
     const clock = new Date();
     clock.setMinutes(clock.getMinutes() - clock.getTimezoneOffset());
@@ -10,6 +15,10 @@ function clockDisplay() {
 clockDisplay();
 setInterval(clockDisplay, 60000);
 
+let savedTodosArray = localStorage.getItem('todos')
+  ? JSON.parse(localStorage.getItem('todos'))
+  : []
+
 function displayTodo() {
     const input = document.getElementById("myInput");
     const inputValue = input.value;
@@ -19,16 +28,27 @@ function displayTodo() {
     }
     const date = document.getElementById("myDate");
     const dateValue = date.value;
-    console.log(dateValue);
     if (dateValue === ''){
         alert("Must select a due date.");
         return;
     }
     const todo = createTodo(inputValue,dateValue);
+    let task = [];
     document.getElementById("todoList").append(todo);
+    task.push(todo);
+    localStorage.setItem('savedTodos', JSON.stringify(task));
     input.value = "";
     clockDisplay();
 }
+// update and save todo list
+// function saveTodoListToLocalStorage() {
+//     let currentTodoList = []
+//     todolist = document.getElementById("todoList");
+//     currentTodoList = todoList.textContent;
+//     savedTodoList += currentTodoList;
+//     localStorage.setItem("todos", (JSON.stringify(savedTodoList)));
+// } 
+
 function createTodo(text,date) {
     const todoListItem = document.createElement("li");
     const todoText = createTodoParagraph(text);
@@ -63,8 +83,6 @@ function createTodoDateSelector(dateValue) {
     todoDateSelector.type = "datetime-local";
     todoDateSelector.class = "dateSelector";
     todoDateSelector.value = dateValue;
-    // dateValue.setMilliseconds(null);
-    // dateValue.setSeconds(null);
     return  todoDateSelector;    
 }
 
@@ -86,20 +104,3 @@ function clearAll(){
     localStorage.clear();
     window.location.reload();
 }
-/*
-//window.onload = savedTodos();
-
-// update and save list
-const todoList = [];
-current_todoList = document.getElementById("todoList");
-listItems = current_todoList.innerHTML;
-todoList += listItems;
-localStorage.setItem("saved", (JSON.stringify(todoList)));
-} 
-
-//load previous tasks
-function savedTodos(){
-    savedTasks = JSON.parse(localStorage.getItem("saved"));
-    document.getElementById("todoList").innerHTML = savedTasks;
-}
-*/
