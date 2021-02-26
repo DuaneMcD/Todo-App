@@ -1,9 +1,15 @@
-document.querySelector('.submit').addEventListener("click", displayTodo);
+let savedTodos = localStorage.getItem('todos')
+  ? JSON.parse(localStorage.getItem('todos'))
+  : [];
+
 window.onload = getSavedTodoList();
+document.querySelector('.submit').addEventListener("click", displayTodo);
 
 function getSavedTodoList(){
     savedTodoList = JSON.parse(localStorage.getItem("savedTodos"));
-    document.getElementById("todoList").textContent = savedTodoList;
+    savedTodos.forEach(function({}){
+        displayTodo(inputValue,dateValue);
+    });
 }
 function clockDisplay() {
     const clock = new Date();
@@ -14,10 +20,6 @@ function clockDisplay() {
 }
 clockDisplay();
 setInterval(clockDisplay, 60000);
-
-let savedTodosArray = localStorage.getItem('todos')
-  ? JSON.parse(localStorage.getItem('todos'))
-  : []
 
 function displayTodo() {
     const input = document.getElementById("myInput");
@@ -32,23 +34,16 @@ function displayTodo() {
         alert("Must select a due date.");
         return;
     }
-    const todo = createTodo(inputValue,dateValue);
-    let task = [];
+    let todo = createTodo(inputValue,dateValue);
+    const savedTodo = {
+        inputValue,
+        dateValue};
     document.getElementById("todoList").append(todo);
-    task.push(todo);
-    localStorage.setItem('savedTodos', JSON.stringify(task));
+    savedTodos.push(savedTodo);
+    localStorage.setItem('savedTodos', JSON.stringify(savedTodos));
     input.value = "";
     clockDisplay();
 }
-// update and save todo list
-// function saveTodoListToLocalStorage() {
-//     let currentTodoList = []
-//     todolist = document.getElementById("todoList");
-//     currentTodoList = todoList.textContent;
-//     savedTodoList += currentTodoList;
-//     localStorage.setItem("todos", (JSON.stringify(savedTodoList)));
-// } 
-
 function createTodo(text,date) {
     const todoListItem = document.createElement("li");
     const todoText = createTodoParagraph(text);
