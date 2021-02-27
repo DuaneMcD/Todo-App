@@ -4,7 +4,7 @@ body {
   margin-left: 5em;
   margin-right: 5em;
 }
-.container1 {
+.container {
   flex-direction: column;
   display: flex;
   flex: row;
@@ -13,22 +13,6 @@ body {
   background: rgba(0, 0, 0, 0.274);
   border-radius: 0.85em;
   box-shadow: 0.055em 0.055em 0.48em rgba(0, 0, 0, 0.568);
-}
-.container1 > input {
-  font-family: "Trebuchet MS";
-  margin: 5px;
-  font-size: 1.1em;
-  background-color: rgba(255, 255, 255, 0.945);
-  border: none;
-  text-align: center;
-  padding: 0.45em;
-  color: rgb(0, 0, 0);
-  min-height: 1.1em;
-  border-radius: 1em;
-  box-shadow: 0.5em 0.5em 0.48em rgba(0, 0, 0, 0.568);
-}
-::placeholder {
-  color: rgba(0, 0, 0, 0.418);
 }
 h1 {
   text-align: center;
@@ -42,83 +26,104 @@ h2 {
   color: lightgoldenrodyellow;
   text-shadow: 0.5em 0.5em 0.48em rgba(0, 0, 0, 0.568);
 }
-.todoInput {
-  width: 45%;
+.todoInput > input {
   text-shadow: 0.15em 0.15em 1.2em rgba(0, 0, 0, 0.144);
   font-weight: bolder;
-  text-align: right;
 }
-li {
+::placeholder {
+  color: rgba(0, 0, 0, 0.418);
+  text-align: center;
+  font-weight: bolder;
+}
+.container > input {
   font-family: "Trebuchet MS";
-  font-weight: bold;
-  height: 1.1em;
-  width: 21em;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  font: 1.75em bold;
+  margin: 5px;
+  font-size: 1.1em;
+  background-color: rgba(255, 255, 255, 0.945);
+  border: none;
+  text-align: right;
+  padding: 0.45em;
+  color: rgb(0, 0, 0);
+  min-height: 1.1em;
+  border-radius: 1em;
+  box-shadow: 0.5em 0.5em 0.48em rgba(0, 0, 0, 0.568);
+  width: 18rem;
+}
+.submit {
+  font-size: 1.6em;
   color: rgb(255, 255, 255);
+}
+.clearAll {
+  font-size: 1.2em;
+  color: rgb(240, 146, 6);
+}
+.submit,
+.clearAll {
+  align-self: flex-end;
+  border: none;
+  font-weight: bolder;
+  background-color: rgba(255, 255, 255, 0.089);
+  margin-top: 0.25em;
+  margin-bottom: 0.34em;
+  margin-right: 0.25em;
+  border-radius: 5px;
+  box-shadow: 0.1em 0.1em 0.48em rgba(0, 0, 0, 0.568);
+  text-shadow: 0.05em 0.05em 0.48em rgba(0, 0, 0, 0.418);
+}
+
+li {
+  justify-content: space-between;
+  display: flex;
+  flex-grow: 1;
   background: rgba(228, 228, 228, 0.527);
-  text-align: left;
   list-style-type: none;
+  padding: 0;
   margin-top: 0.4em;
   margin-bottom: 0.3em;
-  border-width: 0.05em;
+  border-width: 0.09em;
   border-style: solid;
   border-color: rgba(197, 231, 2, 0.795);
   border-radius: 0.18em;
   box-shadow: 0.5em 0.5em 2.25em rgba(0, 0, 0, 0.568);
+}
+#todoList > li > input.checkbox {
+  margin-left: 0.5rem;
+  margin-right: 0.75rem;
+  align-self: center;
+}
+li > p {
+  word-break: break-all;
+  text-align: left;
+  width: 42ch;
+  justify-self: start;
+  align-self: center;
   text-shadow: 0.15em 0.15em 0.8em rgba(0, 0, 0, 0.384);
+  font-family: "Trebuchet MS";
+  color: rgb(255, 255, 255);
 }
 .completed {
   text-decoration: line-through;
   color: rgba(103, 106, 109, 0.753);
 }
 #todoList > li > input[type="datetime-local"] {
+  flex-grow: 1;
   font-family: "Trebuchet MS";
-  font-size: 0.7em;
+  font-size: 0.9em;
   background-color: transparent;
   border: none;
   text-align: right;
   padding: 0;
   color: rgb(0, 0, 0);
 }
-.dueDate {
-  font: 0.625em bold;
-  text-align: center;
-  color: black;
-  background-color: transparent;
-}
-.submit {
-  margin-top: 0.85em;
-  background-color: rgba(255, 255, 255, 0.247);
-  border: none;
-  font-size: 1.6em;
-  font-weight: bold;
-  color: rgb(255, 255, 255);
-  border-radius: 8px;
-  box-shadow: 0.025em 0.025em 0.48em rgba(0, 0, 0, 0.568);
+#todoList > li > input.completed {
+  color: rgba(103, 106, 109, 0.753);
 }
 .delete {
   margin-left: 0.75em;
-  align-self: stretch;
   background-color: transparent;
   border: none;
 }
-.clearAll {
-  align-self: flex-end;
-  font-size: 1.1em;
-  color: rgb(240, 146, 6);
-  border: none;
-  font-weight: bolder;
-  background-color: rgba(255, 255, 255, 0.089);
-  margin-top: 0.5em;
-  margin-bottom: 0.3em;
-  margin-right: 0.35em;
-  border-radius: 5px;
-  box-shadow: 0.1em 0.1em 0.48em rgba(0, 0, 0, 0.568);
-  text-shadow: 0.05em 0.05em 0.48em rgba(0, 0, 0, 0.418);
-}
-#todoList > li > input.checkbox {
-  margin: 10px;
+.delete > img {
+  height: 1.75rem;
+  align-self: center;
 }
