@@ -108,8 +108,7 @@ li > p {
   color: rgba(103, 106, 109, 0.753);
 }
 #todoList > li > input[type="datetime-local"] {
-  min-width: 13rem;
-  margin-left: auto;
+  /* min-width: 13rem; */
   font-family: "Trebuchet MS";
   font-size: 0.9rem;
   font-weight: bold;
@@ -117,6 +116,8 @@ li > p {
   border: none;
   text-align: right;
   color: rgb(0, 0, 0);
+  padding: 0;
+  margin: 0;
 }
 #todoList > li > input.completed {
   color: rgba(103, 106, 109, 0.753);
@@ -129,5 +130,6 @@ li > p {
 }
 .delete > img {
   height: 1.75rem;
-  align-self: center;
+  align-items: center;
+  justify-content: center;
 }
