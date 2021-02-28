@@ -95,6 +95,7 @@ function createDeleteButton(todoListItem, key) {
     const deleteButton = document.createElement("button");
     const flame = new Image();
     flame.src = "images/flame.svg";
+    flame.alt = "delete button";
     deleteButton.className = "delete";
     deleteButton.appendChild(flame);
     deleteButton.addEventListener("click", () => {

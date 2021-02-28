@@ -1,15 +1,15 @@
 body {
-  display: column;
   font-family: "Trebuchet MS";
   background-color: rgb(24, 86, 128);
-  margin-left: 4rem;
-  margin-right: 4rem;
+  margin-inline: 2%;
 }
 .container {
-  flex-direction: column;
   display: flex;
-  flex: row;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  min-width: 340px;
+  max-width: 925px;
   background: rgba(0, 0, 0, 0.274);
   border-radius: 0.85rem;
   box-shadow: 0.055rem 0.055rem 0.48rem rgba(0, 0, 0, 0.568);
@@ -37,16 +37,16 @@ h2 {
 }
 .container > input {
   font-family: "Trebuchet MS";
-  margin: 0.3rem;
-  font-size: 1.1rem;
+  margin: 0.3em;
+  font-size: 1.1em;
   background-color: rgba(255, 255, 255, 0.945);
   border: none;
   text-align: right;
   padding: 0.45rem;
   color: rgb(0, 0, 0);
-  border-radius: 1rem;
-  box-shadow: 0.5rem 0.5rem 0.48rem rgba(0, 0, 0, 0.568);
-  width: 18rem;
+  border-radius: 1em;
+  box-shadow: 0.5em 0.5em 0.48em rgba(0, 0, 0, 0.568);
+  width: min(245px);
 }
 .submit {
   font-size: 1.5rem;
@@ -70,21 +70,28 @@ h2 {
   text-shadow: 0.05rem 0.05rem 0.48rem rgba(0, 0, 0, 0.418);
 }
 ul {
-  margin: 1rem;
-  display: column;
+  margin-inline: 2%;
   padding: 0;
+  min-width: 325px;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
 }
 li {
   display: flex;
-  background: rgba(228, 228, 228, 0.527);
-  list-style-type: none;
+  flex-wrap: wrap;
+  flex-direction: row;
+  max-width: 800px;
   margin-top: 0.4rem;
   margin-bottom: 0.3rem;
+  list-style-type: none;
+  background: rgba(228, 228, 228, 0.527);
+  box-shadow: 0.5rem 0.5rem 2.25rem rgba(0, 0, 0, 0.568);
+  border-color: rgba(197, 231, 2, 0.795);
   border-width: 0.09rem;
   border-style: solid;
-  border-color: rgba(197, 231, 2, 0.795);
   border-radius: 0.18rem;
-  box-shadow: 0.5rem 0.5rem 2.25rem rgba(0, 0, 0, 0.568);
+  padding: 0;
 }
 #todoList > li > input.checkbox {
   margin-left: 0.5rem;
@@ -92,23 +99,20 @@ li {
   align-self: center;
 }
 li > p {
-  flex: 1;
+  width: 32ch;
   word-break: normal;
-  overflow-wrap: anywhere;
   text-align: left;
-  margin-right: auto;
+  margin-inline: auto;
   font-family: "Trebuchet MS";
   color: rgb(255, 255, 255);
   text-shadow: 0.15rem 0.15rem 0.8rem rgba(0, 0, 0, 0.384);
-
-  width: minmax(6ch, 32ch);
 }
 .completed {
   text-decoration: line-through;
   color: rgba(103, 106, 109, 0.753);
 }
 #todoList > li > input[type="datetime-local"] {
-  /* min-width: 13rem; */
+  max-height: 100%;
   font-family: "Trebuchet MS";
   font-size: 0.9rem;
   font-weight: bold;
@@ -129,6 +133,8 @@ li > p {
   border: none;
 }
 .delete > img {
+  display: block;
+  max-width: 100%;
   height: 1.75rem;
   align-items: center;
   justify-content: center;
