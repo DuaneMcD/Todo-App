@@ -1,33 +1,33 @@
 body {
+  display: column;
   font-family: "Trebuchet MS";
   background-color: rgb(24, 86, 128);
-  margin-left: 5em;
-  margin-right: 5em;
+  margin-left: 4rem;
+  margin-right: 4rem;
 }
 .container {
   flex-direction: column;
   display: flex;
   flex: row;
   align-items: center;
-  min-width: 35em;
   background: rgba(0, 0, 0, 0.274);
-  border-radius: 0.85em;
-  box-shadow: 0.055em 0.055em 0.48em rgba(0, 0, 0, 0.568);
+  border-radius: 0.85rem;
+  box-shadow: 0.055rem 0.055rem 0.48rem rgba(0, 0, 0, 0.568);
 }
 h1 {
   text-align: center;
   color: white;
-  font-size: 2.5em;
-  margin-bottom: 0.6em;
-  text-shadow: 0.5em 0.5em 0.48em rgba(0, 0, 0, 0.568);
+  font-size: 2.5rem;
+  margin-bottom: 0.6rem;
+  text-shadow: 0.5rem 0.5rem 0.48rem rgba(0, 0, 0, 0.568);
 }
 h2 {
   margin-top: 0;
   color: lightgoldenrodyellow;
-  text-shadow: 0.5em 0.5em 0.48em rgba(0, 0, 0, 0.568);
+  text-shadow: 0.5rem 0.5rem 0.48rem rgba(0, 0, 0, 0.568);
 }
 .todoInput > input {
-  text-shadow: 0.15em 0.15em 1.2em rgba(0, 0, 0, 0.144);
+  text-shadow: 0.15rem 0.15rem 1.2rem rgba(0, 0, 0, 0.144);
   font-weight: bolder;
 }
 ::placeholder {
@@ -37,24 +37,24 @@ h2 {
 }
 .container > input {
   font-family: "Trebuchet MS";
-  margin: 5px;
-  font-size: 1.1em;
+  margin: 0.3rem;
+  font-size: 1.1rem;
   background-color: rgba(255, 255, 255, 0.945);
   border: none;
   text-align: right;
-  padding: 0.45em;
+  padding: 0.45rem;
   color: rgb(0, 0, 0);
-  min-height: 1.1em;
-  border-radius: 1em;
-  box-shadow: 0.5em 0.5em 0.48em rgba(0, 0, 0, 0.568);
+  min-height: 1.1rem;
+  border-radius: 1rem;
+  box-shadow: 0.5rem 0.5rem 0.48rem rgba(0, 0, 0, 0.568);
   width: 18rem;
 }
 .submit {
-  font-size: 1.6em;
+  font-size: 1.5rem;
   color: rgb(255, 255, 255);
 }
 .clearAll {
-  font-size: 1.2em;
+  font-size: 1.15rem;
   color: rgb(240, 146, 6);
 }
 .submit,
@@ -63,28 +63,29 @@ h2 {
   border: none;
   font-weight: bolder;
   background-color: rgba(255, 255, 255, 0.089);
-  margin-top: 0.25em;
-  margin-bottom: 0.34em;
-  margin-right: 0.25em;
-  border-radius: 5px;
-  box-shadow: 0.1em 0.1em 0.48em rgba(0, 0, 0, 0.568);
-  text-shadow: 0.05em 0.05em 0.48em rgba(0, 0, 0, 0.418);
+  margin-top: 0.25rem;
+  margin-bottom: 0.34rem;
+  margin-right: 0.25rem;
+  border-radius: 0.3rem;
+  box-shadow: 0.1rem 0.1rem 0.48rem rgba(0, 0, 0, 0.568);
+  text-shadow: 0.05rem 0.05rem 0.48rem rgba(0, 0, 0, 0.418);
 }
-
+ul {
+  margin: 1rem;
+  display: column;
+  padding: 0;
+}
 li {
-  justify-content: space-between;
   display: flex;
-  flex-grow: 1;
   background: rgba(228, 228, 228, 0.527);
   list-style-type: none;
-  padding: 0;
-  margin-top: 0.4em;
-  margin-bottom: 0.3em;
-  border-width: 0.09em;
+  margin-top: 0.4rem;
+  margin-bottom: 0.3rem;
+  border-width: 0.09rem;
   border-style: solid;
   border-color: rgba(197, 231, 2, 0.795);
-  border-radius: 0.18em;
-  box-shadow: 0.5em 0.5em 2.25em rgba(0, 0, 0, 0.568);
+  border-radius: 0.18rem;
+  box-shadow: 0.5rem 0.5rem 2.25rem rgba(0, 0, 0, 0.568);
 }
 #todoList > li > input.checkbox {
   margin-left: 0.5rem;
@@ -92,34 +93,37 @@ li {
   align-self: center;
 }
 li > p {
-  word-break: break-all;
+  flex: 1;
+  word-break: normal;
   text-align: left;
-  width: 42ch;
-  justify-self: start;
-  align-self: center;
-  text-shadow: 0.15em 0.15em 0.8em rgba(0, 0, 0, 0.384);
+  margin-right: auto;
   font-family: "Trebuchet MS";
   color: rgb(255, 255, 255);
+  text-shadow: 0.15rem 0.15rem 0.8rem rgba(0, 0, 0, 0.384);
+
+  width: minmax(6ch, 32ch);
 }
 .completed {
   text-decoration: line-through;
   color: rgba(103, 106, 109, 0.753);
 }
 #todoList > li > input[type="datetime-local"] {
-  flex-grow: 1;
+  min-width: 13rem;
+  margin-left: auto;
   font-family: "Trebuchet MS";
-  font-size: 0.9em;
+  font-size: 0.9rem;
+  font-weight: bold;
   background-color: transparent;
   border: none;
   text-align: right;
-  padding: 0;
   color: rgb(0, 0, 0);
 }
 #todoList > li > input.completed {
   color: rgba(103, 106, 109, 0.753);
 }
 .delete {
-  margin-left: 0.75em;
+  margin-left: 0.2rem;
+  margin-right: 0.1rem;
   background-color: transparent;
   border: none;
 }
