@@ -1,141 +1,184 @@
 body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-inline: 1em;
+
   font-family: "Trebuchet MS";
-  background-color: rgb(24, 86, 128);
-  margin-inline: 2%;
+  background-color: rgb(12, 84, 133);
+  padding-inline: 2;
 }
 .container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-width: 340px;
-  max-width: 925px;
-  background: rgba(0, 0, 0, 0.274);
-  border-radius: 0.85rem;
+  min-width: 20em;
+  background: rgba(0, 109, 182, 0.733);
+  border-radius: 0.25rem;
   box-shadow: 0.055rem 0.055rem 0.48rem rgba(0, 0, 0, 0.568);
 }
 h1 {
   text-align: center;
   color: white;
   font-size: 2.5rem;
-  margin-bottom: 0.6rem;
-  text-shadow: 0.5rem 0.5rem 0.48rem rgba(0, 0, 0, 0.568);
+  margin-block: 0.75rem;
+  padding-inline: 0.25em;
+  text-shadow: 0.125rem 0.125rem 0.0125em rgba(0, 0, 0, 0.301);
 }
 h2 {
   margin-top: 0;
   color: lightgoldenrodyellow;
   text-shadow: 0.5rem 0.5rem 0.48rem rgba(0, 0, 0, 0.568);
 }
-.todoInput > input {
-  text-shadow: 0.15rem 0.15rem 1.2rem rgba(0, 0, 0, 0.144);
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+#myInput {
   font-weight: bolder;
+  text-align: center;
+  padding-top: 20px;
+  margin-bottom: 5px;
+  position: relative;
+}
+#myInput input {
+  border: none;none;
+  appearance: none;
+  background: #f2f2f2;
+  border-radius: 3px;
+  width: 250px;
+  outline: none;
+  font-size: 14px;
 }
 ::placeholder {
-  color: rgba(0, 0, 0, 0.418);
-  text-align: center;
-  font-weight: bolder;
+  position: absolute;
+  top: calc(70% + 10px);
+  transform: translateY(-70%);
+  transition: top 1.6s ease, color 3s ease, font-size 2s ease;
 }
 .container > input {
   font-family: "Trebuchet MS";
+  font-weight: bold;
   margin: 0.3em;
   font-size: 1.1em;
-  background-color: rgba(255, 255, 255, 0.945);
+  background-color: rgb(255, 255, 255);
   border: none;
   text-align: right;
   padding: 0.45rem;
   color: rgb(0, 0, 0);
-  border-radius: 1em;
-  box-shadow: 0.5em 0.5em 0.48em rgba(0, 0, 0, 0.568);
-  width: min(245px);
+  border-radius: 0.75em;
+  box-shadow: 0.055rem 0.055rem 0.48rem rgba(0, 0, 0, 0.26);
+  min-width: 275px;
 }
 .submit {
-  font-size: 1.5rem;
-  color: rgb(255, 255, 255);
+  font-size: 1.4rem;
+  color: rgb(13, 178, 255);
 }
 .clearAll {
-  font-size: 1.15rem;
-  color: rgb(240, 146, 6);
+  font-size: 1.35rem;
+  color: rgb(248, 152, 9);
 }
 .submit,
 .clearAll {
   align-self: flex-end;
   border: none;
+  width: 125px;
   font-weight: bolder;
-  background-color: rgba(255, 255, 255, 0.089);
+  background-color: rgb(240, 240, 240);
   margin-top: 0.25rem;
   margin-bottom: 0.34rem;
   margin-right: 0.25rem;
-  border-radius: 0.3rem;
-  box-shadow: 0.1rem 0.1rem 0.48rem rgba(0, 0, 0, 0.568);
-  text-shadow: 0.05rem 0.05rem 0.48rem rgba(0, 0, 0, 0.418);
+  border-radius: 0.25rem;
+  box-shadow: 0.01em 0.1em 0em rgba(0, 0, 0, 0.568);
 }
 ul {
-  margin-inline: 2%;
-  padding: 0;
-  min-width: 325px;
   flex-direction: column;
-  display: flex;
-  align-items: center;
+  padding: 0;
+  padding-inline: 12%;
+  min-width: 20em;
+  max-width: 825px;
 }
 li {
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  max-width: 800px;
-  margin-top: 0.4rem;
-  margin-bottom: 0.3rem;
+  align-items: start;
+  margin-block: 5px;
   list-style-type: none;
-  background: rgba(228, 228, 228, 0.527);
-  box-shadow: 0.5rem 0.5rem 2.25rem rgba(0, 0, 0, 0.568);
-  border-color: rgba(197, 231, 2, 0.795);
-  border-width: 0.09rem;
-  border-style: solid;
-  border-radius: 0.18rem;
+  background: rgba(255, 255, 255, 0.664);
+  box-shadow: 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.568);
+  border-radius: 0.25rem;
   padding: 0;
+  max-width: 1000px;
+
+  justify-content: start;
+  align-items: center;
 }
-#todoList > li > input.checkbox {
-  margin-left: 0.5rem;
-  margin-right: 0.75rem;
-  align-self: center;
+.delete {
+  margin-right: auto;
 }
-#todoList > li > input.todoText {
-  width: 32ch;
-  word-break: normal;
-  text-align: left;
-  margin-inline: auto;
+.checkmark {
+  margin-left: 0.25em;
+}
+.checkmark,
+.delete {
+  display: flex;
+  margin-block: auto;
+  background-color: transparent;
+  border: none;
+  padding: 0.25em;
+  min-width: 2.125rem;
+}
+.checkmark > img,
+.delete > img {
+  display: block;
+
+  max-width: 100%;
+  height: 3.2rem;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+}
+.textDateDiv {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: end;
+  max-width: 500px;
+}
+.todoText {
+  text-align: right;
+  max-width: 18ch;
   font-family: "Trebuchet MS";
+  font-size: 1.35em;
   color: rgb(255, 255, 255);
-  text-shadow: 0.15rem 0.15rem 0.8rem rgba(0, 0, 0, 0.384);
+  background-color: transparent;
+  border: none;
+  text-overflow: auto;
+  white-space: wrap;
+  overflow: auto;
+  overflow-wrap: break-word;
+  word-break: break-all;
 }
-.completed {
+.todoText.completed,
+.dateSelector.completed {
   text-decoration: line-through;
   color: rgba(103, 106, 109, 0.753);
 }
-#todoList > li > input {
+.dateSelector {
   max-height: 100%;
   font-family: "Trebuchet MS";
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   font-weight: bold;
   background-color: transparent;
   border: none;
-  text-align: right;
+  text-align: left;
   color: rgb(0, 0, 0);
-  padding: 0;
-  margin: 0;
+  padding-left: 16px;
+  padding-right: 8px;
+  margin-inline: auto;
 }
-#todoList > li > input.completed {
-  color: rgba(103, 106, 109, 0.753);
-}
-.delete {
-  margin-left: 0.2rem;
-  margin-right: 0.1rem;
-  background-color: transparent;
-  border: none;
-}
-.delete > img {
-  display: block;
-  max-width: 100%;
-  height: 1.75rem;
-  align-items: center;
-  justify-content: center;
+.liDiv {
+  display: flex;
+  margin-left: auto;
 }

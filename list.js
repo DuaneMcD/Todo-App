@@ -26,6 +26,7 @@ function displayTodo(inputValue, dateValue) {
     document.getElementById("todoList").append(newTodoListItem);
     document.getElementById("myInput").value = "";
     clockDisplay();
+    window.location.reload();
 }
 function clockDisplay() {
     const clock = new Date();
@@ -55,22 +56,56 @@ function loadTodos(inputValue, dateValue, key) {
     document.getElementById("todoList").append(todoListItem);
  }
 function createTodo(text,date, key) {
-    const todoListItem= document.createElement("li");
+    const todoListItem= createTodoListItem(date, key);
     const todoText = createTodoTextInput(text,todoListItem, key);
     const todoDueDate = createTodoDateSelector(date, todoListItem, key);
-    const toggleTodoCheckBox = createToggleTodoCheckbox(todoText,todoDueDate);
+    const toggleTodoCheckMark = createToggleTodoCheckMark(todoText,todoDueDate);
     const deleteButton = createDeleteButton(todoListItem, key);
-    todoListItem.append(toggleTodoCheckBox);
-    todoListItem.append(todoText);
-    todoListItem.append(todoDueDate);
+    const textDateDiv = document.createElement("div");
+    textDateDiv.className = "textDateDiv";
+    const liDiv = document.createElement("div");
+    liDiv.className = "liDiv";
+    liDiv.append(todoDueDate);
+    textDateDiv.append(todoText);
+    textDateDiv.append(liDiv);
+    todoListItem.append(toggleTodoCheckMark);
     todoListItem.append(deleteButton);
+    todoListItem.append(textDateDiv);
     return todoListItem;
 }
+function createTodoListItem(date, key) {
+    const newListItem = document.createElement("li");
+    newListItem.className = "todoLi";
+    newListItem.id = key;
+    newListItem.addEventListener("change", () => {
+        toggleBorderColor(date);
+    })
+    return newListItem;
+}
+function toggleBorderColor(date) {
+    // green = "#97db18";
+    // yellow = "#f0f03b";
+    // red = "#cf2222";
+    // grey = "#676a6d";
+    // blue = "#2b8eff";
+    // let currentTime = new Date();
+    // console.log(date - currentTime);
+    // switch (date - currentTime) {
+    //     case (t > 1):
+    //         todoListItem.borderColor.toggle(green);
+    //         break;
+    //     case (t < 1):
+    //         todoListItem.borderColor.toggle(red);
+    //         break;
+    //     default:
+    //         todoListItem.borderColor.toggle(blue);
+    // }
+}
 function createTodoTextInput(text,todoListItem, key) {
-    const todoTextInput = document.createElement("input");
-    todoTextInput.type = "input";
+    const todoTextInput = document.createElement("p");
     todoTextInput.className = "todoText";
-    todoTextInput.value = text;
+    todoTextInput.contentEditable = "true";
+    todoTextInput.textContent = text;
     todoTextInput.addEventListener("change", () => {
         updateTodo(todoListItem, key);
     })
@@ -87,22 +122,24 @@ function createTodoDateSelector(dateValue,todoListItem, key) {
     return  todoDateSelector;    
 }
 function updateTodo(todoListItem, key) {
-    document.activeElement.blur();
     localStorage.removeItem(key);
-    inputValue = todoListItem.querySelector('.todoText').value;
+    inputValue = todoListItem.querySelector('.todoText').textContent;
     dateValue = todoListItem.querySelector('.dateSelector').value;
     let newTodo = {inputValue, dateValue};
     saveTodosLocal(newTodo, dateValue);
     window.location.reload();
 }
-function createToggleTodoCheckbox(todoText, todoDueDate) {
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.className = "checkbox";
-    checkbox.addEventListener("click", () => {
+function createToggleTodoCheckMark(todoText, todoDueDate) {
+    const checkMark = document.createElement("button");
+    const check = new Image();
+    check.src = "images/checkmark.svg";
+    check.alt = "check mark";
+    checkMark.className = "checkmark";
+    checkMark.appendChild(check);
+    checkMark.addEventListener("click", () => {
         toggleCheckedOff(todoText,todoDueDate);
     })
-    return checkbox;
+    return checkMark;
 }
 function toggleCheckedOff(todoText,todoDueDate) {
     todoText.classList.toggle("completed");
