@@ -99,7 +99,7 @@ ul {
   padding: 0;
   padding-inline: 12%;
   min-width: 20em;
-  max-width: 825px;
+  max-width: 925px;
 }
 li {
   display: flex;
@@ -138,21 +138,22 @@ li {
   height: 3.2rem;
   min-height: 3rem;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 }
 .textDateDiv {
   display: flex;
   flex-wrap: wrap;
-  justify-content: end;
+  justify-content: center;
   max-width: 500px;
 }
 .todoText {
-  text-align: right;
-  max-width: 18ch;
+  text-align: left;
+  max-width: 24ch;
   font-family: "Trebuchet MS";
   font-size: 1.35em;
   color: rgb(255, 255, 255);
   background-color: transparent;
+  padding-left: .1em;
   border: none;
   text-overflow: auto;
   white-space: wrap;
