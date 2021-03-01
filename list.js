@@ -56,8 +56,8 @@ function loadTodos(inputValue, dateValue, key) {
  }
 function createTodo(text,date, key) {
     const todoListItem= document.createElement("li");
-    const todoText = createTodoParagraph(text);
-    const todoDueDate = createTodoDateSelector(date);
+    const todoText = createTodoTextInput(text,todoListItem, key);
+    const todoDueDate = createTodoDateSelector(date, todoListItem, key);
     const toggleTodoCheckBox = createToggleTodoCheckbox(todoText,todoDueDate);
     const deleteButton = createDeleteButton(todoListItem, key);
     todoListItem.append(toggleTodoCheckBox);
@@ -66,17 +66,32 @@ function createTodo(text,date, key) {
     todoListItem.append(deleteButton);
     return todoListItem;
 }
-function createTodoParagraph(text) {
-    const todoParagraph = document.createElement("p");
-    todoParagraph.textContent = text;
-    return todoParagraph;
+function createTodoTextInput(text,todoListItem, key) {
+    const todoTextInput = document.createElement("input");
+    todoTextInput.type = "input";
+    todoTextInput.className = "todoText";
+    todoTextInput.value = text;
+    todoTextInput.addEventListener("change", () => {
+        updateTodo(todoListItem, key);
+    })
+    return todoTextInput;
 }
-function createTodoDateSelector(dateValue) {  
+function createTodoDateSelector(dateValue,todoListItem, key) {  
     const todoDateSelector = document.createElement("input");
     todoDateSelector.type = "datetime-local";
-    todoDateSelector.class = "dateSelector";
+    todoDateSelector.className = "dateSelector";
     todoDateSelector.value = dateValue;
+    todoDateSelector.addEventListener("change", () => {
+        updateTodo(todoListItem, key);
+    })
     return  todoDateSelector;    
+}
+function updateTodo(todoListItem, key) {
+    localStorage.removeItem(key);
+    inputValue = todoListItem.querySelector('.todoText').value;
+    dateValue = todoListItem.querySelector('.dateSelector').value;
+    let newTodo = {inputValue, dateValue};
+    saveTodosLocal(newTodo);
 }
 function createToggleTodoCheckbox(todoText, todoDueDate) {
     const checkbox = document.createElement("input");

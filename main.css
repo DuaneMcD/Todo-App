@@ -98,7 +98,7 @@ li {
   margin-right: 0.75rem;
   align-self: center;
 }
-li > p {
+#todoList > li > input.todoText {
   width: 32ch;
   word-break: normal;
   text-align: left;
@@ -111,7 +111,7 @@ li > p {
   text-decoration: line-through;
   color: rgba(103, 106, 109, 0.753);
 }
-#todoList > li > input[type="datetime-local"] {
+#todoList > li > input {
   max-height: 100%;
   font-family: "Trebuchet MS";
   font-size: 0.9rem;
