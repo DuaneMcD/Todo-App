@@ -21,7 +21,7 @@ function checkInputEmpty() {
 }
 function displayTodo(inputValue, dateValue) {
     let todo = {inputValue, dateValue};
-    todoKey = saveTodosLocal(todo);
+    todoKey = saveTodosLocal(todo, dateValue);
     newTodoListItem = createTodo(inputValue, dateValue, todoKey);
     document.getElementById("todoList").append(newTodoListItem);
     document.getElementById("myInput").value = "";
@@ -35,12 +35,12 @@ function clockDisplay() {
     document.querySelector('#myDate').value = clock.toISOString().slice(0, -1);
 }
 function loadTodoKeys() {
-       //go to localstorage and rebuild the todo List
+    storageSorted = Object.keys(localStorage).sort();      
        let num = localStorage.length;
        if (num) {
             APP.keys = []; //reset the keys array
             for (let i = 0; i < num; i++) {
-                let key = localStorage.key(i);
+                let key = storageSorted[i];
                 APP.keys.push(key);
             let storage = localStorage.getItem(key);
             let localTodo = JSON.parse(storage);
@@ -87,11 +87,13 @@ function createTodoDateSelector(dateValue,todoListItem, key) {
     return  todoDateSelector;    
 }
 function updateTodo(todoListItem, key) {
+    document.activeElement.blur();
     localStorage.removeItem(key);
     inputValue = todoListItem.querySelector('.todoText').value;
     dateValue = todoListItem.querySelector('.dateSelector').value;
     let newTodo = {inputValue, dateValue};
-    saveTodosLocal(newTodo);
+    saveTodosLocal(newTodo, dateValue);
+    window.location.reload();
 }
 function createToggleTodoCheckbox(todoText, todoDueDate) {
     const checkbox = document.createElement("input");
@@ -123,8 +125,8 @@ function deleteTodo(todoListItem, key) {
     localStorage.removeItem(key);
 
 }
-function saveTodosLocal(todo) {
-    key = APP.keybase + (new Date().getMinutes() + new Date().getMilliseconds() + new Date().getHours() + new Date().getSeconds());
+function saveTodosLocal(todo, dateValue) {
+    key = APP.keybase + dateValue + (new Date().getMinutes() + new Date().getMilliseconds());
     localStorage.setItem((key), JSON.stringify(todo));
     return key;
     
