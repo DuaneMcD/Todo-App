@@ -6,6 +6,8 @@ view <a href="https://duanemcd.github.io/Todo-App/"> to-do app</a>!
 ## Summary
 A simple to-do application. Handcoded and simple to keep distactions low and True Productivity high!
 
+![screenshot](screenshot.png)
+
 ##Features
 <ul>
   <li>Localstorage persistence </li>
